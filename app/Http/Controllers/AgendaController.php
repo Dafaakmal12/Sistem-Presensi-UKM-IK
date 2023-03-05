@@ -39,7 +39,6 @@ class AgendaController extends Controller
         $agenda->endTime = $request->endTime;
         $agenda->save();
 
-        //notify the user when agenda created 
         $user = User::all();
         Notification::send($user, new AgendaInfo($agenda));
         return redirect()->route('agenda.index')->with('success', 'Agenda berhasil ditambahkan');
@@ -48,5 +47,11 @@ class AgendaController extends Controller
     public function view(){
         $agenda = Agenda::all();
         return view('agenda.listagenda', compact('agenda'));
+    }
+
+    public function delete($id){
+        $agenda = Agenda::find($id);
+        $agenda->delete();
+        return redirect()->route('agenda.listagenda')->with('success', 'Agenda berhasil dihapus');
     }
 }

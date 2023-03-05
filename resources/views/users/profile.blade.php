@@ -1,4 +1,4 @@
 @extends('layouts.user')
 @section('content')
-test
+selamat datang, {{ $user->name }}
 @endsection

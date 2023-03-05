@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Agenda;
 
 class HomeController extends Controller
 {
@@ -23,6 +24,20 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('users.index');
+        $date = date('Y-m-d');
+        //get lastest agenda from database
+        $agenda = Agenda::latest()->first();   
+        return view('users.index', compact('date', 'agenda'));
+    }
+
+    public function agenda()
+    {
+        return view('users.listagenda');
+    }
+
+    public function profile()
+    {
+        $user = auth()->user();
+        return view('users.profile', compact('user'));
     }
 }

@@ -22,6 +22,11 @@
             </tr>
         </thead>
         <tbody>
+            @if($agenda->count() == 0)
+                <tr>
+                    <td colspan="5" class="text-center">Tidak ada data</td>
+                </tr>
+            @endif
             @foreach($agenda as $item)
             <tr>
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
@@ -37,10 +42,12 @@
                     {{ $item->endTime->format('H:i') }} WIB
                 </td>
                 <td class="px-6 py-4">
-                    <form action="/" method="POST">
+                    <form action="{{ route('agenda.delete', $item->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="font-medium text-red-600 dark:text-red-500 hover:underline">Delete</button>
+                        <button type="submit"
+                            class="font-medium text-red-600 dark:text-red-500 hover:underline">
+                            Delete</button>
                     </form>
                 </td>
             </tr>

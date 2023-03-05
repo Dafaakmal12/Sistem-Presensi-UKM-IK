@@ -38,6 +38,7 @@ Route::delete('/admin/list/{id}', [AdminController::class, 'delete'])->name("adm
 Route::get('/admin/agenda', [AgendaController::class, 'index'])->name("agenda.index");
 Route::post('/admin/agenda/store', [AgendaController::class, 'store'])->name("agenda.store");
 Route::get('/admin/agenda/list', [AgendaController::class, 'view'])->name("agenda.listagenda");
+Route::delete('/admin/agenda/list/{id}', [AgendaController::class, 'delete'])->name("agenda.delete");
 
 // welcome route
 Route::get('/', [LoginController::class, 'index'])->name("login");
@@ -48,4 +49,6 @@ Route::post('/logout', [LoginController::class, 'logout'])->name("logout");
 
 Route::middleware(['auth', 'role:user'])->group(function(){
     Route::get('/user', [HomeController::class, 'index'])->name("users.index");
+    Route::get('/user/agenda', [HomeController::class, 'agenda'])->name("users.listagenda");
+    Route::get('/user/profile', [HomeController::class, 'profile'])->name("users.profile");
 });
