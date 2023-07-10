@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('content')
     <h1 class="text-4xl font-bold my-4">Membuat Agenda Baru</h1>
-    <form action="{{ route('agenda.store') }}" method="POST">
+    <form action="{{ route('agenda.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="mb-6">
             <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama Agenda</label>
@@ -35,6 +35,10 @@
         <div class="mb-6">
             <label for="endTime">Agenda Berakhir :</label>
             <input type="time" id="endTime" name="endTime" min="09:00" max="18:00" required>
+        </div>
+        <div class="mb-6">
+            <label for="documentFile">documentFile</label>
+            <input type="file" id="documentFile" name="documentFile" required>
         </div>
         <button type="submit"
             class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">

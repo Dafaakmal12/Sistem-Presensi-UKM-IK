@@ -26,9 +26,14 @@ class AgendaController extends Controller
             'dateTime' => 'required',
             'startTime' => 'required',
             'endTime' => 'required',
+            'documentFile' => 'required',
         ]);
 
         $formatDate = Carbon::parse($request->dateTime)->format('Y-m-d');
+
+        //handle upload file
+        $filename = $request->file('documentFile')->getClientOriginalName();
+        $request->file('documentFile')->storeAs('public/document', $filename);
 
         $agenda = new Agenda;
         $agenda->nama = $request->nama;
@@ -37,6 +42,7 @@ class AgendaController extends Controller
         $agenda->dateTime = $formatDate;
         $agenda->startTime = $request->startTime;
         $agenda->endTime = $request->endTime;
+        $agenda->documentFile = $filename;
         $agenda->save();
 
         $user = User::all();
@@ -53,5 +59,10 @@ class AgendaController extends Controller
         $agenda = Agenda::find($id);
         $agenda->delete();
         return redirect()->route('agenda.listagenda')->with('success', 'Agenda berhasil dihapus');
+    }
+
+    public function download($id){
+        $agenda = Agenda::find($id);
+        return response()->download(storage_path("app/public/document/{$agenda->documentFile}"));
     }
 }

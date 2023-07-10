@@ -18,6 +18,7 @@ class Agenda extends Model
         'dateTime',
         'startTime',
         'endTime',
+        'documentFile',
         'created_at',
         'updated_at',
     ];

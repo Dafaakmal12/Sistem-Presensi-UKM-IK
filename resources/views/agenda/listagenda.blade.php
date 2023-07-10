@@ -17,6 +17,9 @@
                     Berakhir
                 </th>
                 <th scope="col" class="px-6 py-3">
+                    File
+                </th>
+                <th scope="col" class="px-6 py-3">
                     Action
                 </th>
             </tr>
@@ -40,6 +43,11 @@
                 </td>
                 <td class="px-6 py-4">
                     {{ $item->endTime->format('H:i') }} WIB
+                </td>
+                <td class="px-6 py-4">
+                    <a href="{{ route('agenda.download', $item->id) }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
+                        Download</a>
+                </td>
                 </td>
                 <td class="px-6 py-4">
                     <form action="{{ route('agenda.delete', $item->id) }}" method="POST">

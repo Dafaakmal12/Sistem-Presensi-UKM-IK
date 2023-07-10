@@ -39,6 +39,8 @@ Route::get('/admin/agenda', [AgendaController::class, 'index'])->name("agenda.in
 Route::post('/admin/agenda/store', [AgendaController::class, 'store'])->name("agenda.store");
 Route::get('/admin/agenda/list', [AgendaController::class, 'view'])->name("agenda.listagenda");
 Route::delete('/admin/agenda/list/{id}', [AgendaController::class, 'delete'])->name("agenda.delete");
+//download file
+Route::get('/admin/agenda/list/{id}', [AgendaController::class, 'download'])->name("agenda.download");
 
 // welcome route
 Route::get('/', [LoginController::class, 'index'])->name("login");
