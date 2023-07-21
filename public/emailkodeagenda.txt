@@ -1,0 +1,2 @@
+$user = User::all();
+        Notification::send($user, new AgendaInfo($agenda));

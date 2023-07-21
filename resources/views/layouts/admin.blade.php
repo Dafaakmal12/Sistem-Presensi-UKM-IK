@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    @yield('scripts')
 
     <title>Laravel</title>
 
@@ -60,7 +61,7 @@
                             <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
                                 clip-rule="evenodd"></path>
                         </svg>
-                        <span class="flex-1 ml-3 whitespace-nowrap">Users</span>
+                        <span class="flex-1 ml-3 whitespace-nowrap">Anggota</span>
                     </a>
                 </li>
                 <li>
@@ -101,6 +102,8 @@
                         <span class="flex-1 ml-3 whitespace-nowrap">List Agenda</span>
                     </a>
                 </li>
+                
+
                 <li>
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf

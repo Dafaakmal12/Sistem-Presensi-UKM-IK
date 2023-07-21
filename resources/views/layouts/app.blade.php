@@ -21,7 +21,7 @@
         <div class="lg:grid lg:min-h-screen lg:grid-cols-12">
             <section class="relative flex h-32 items-end bg-gray-900 lg:col-span-5 lg:h-full xl:col-span-6">
                 <img alt="Night"
-                    src="https://images.unsplash.com/photo-1617195737496-bc30194e3a19?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+                    src="https://img.freepik.com/free-photo/blue-background_23-2147633356.jpg?w=826&t=st=1689598430~exp=1689599030~hmac=62f6079be04b3fcf0a647e1b959d8a3fc4f3a76228c4efc60ea3d7fa7b06785f"
                     class="absolute inset-0 h-full w-full object-cover opacity-80" />
 
                 <div class="hidden lg:relative lg:block lg:p-12">
@@ -30,11 +30,11 @@
                     </a>
 
                     <h2 class="mt-6 text-2xl font-bold text-white sm:text-3xl md:text-4xl">
-                        Selamat Datang di UKMIK 🦑
+                        SISTEM PRESENSI UKM IK
                     </h2>
 
                     <p class="mt-4 leading-relaxed text-white/90">
-                        Sistem Presensi ini dibuat oleh <a href="https:/www.github.com/febriaricandra" class="text-white underline">febriari candra</a>
+                        @by <a href="https://github.com/Dafaakmal12" class="text-white underline">UKM IK</a>
                     </p>
                 </div>
             </section>

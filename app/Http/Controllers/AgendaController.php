@@ -18,6 +18,7 @@ class AgendaController extends Controller
         return view('agenda.index');
     }
 
+
     public function store(Request $request){
         $request->validate([
             'nama' => 'required',
@@ -44,17 +45,51 @@ class AgendaController extends Controller
         $agenda->endTime = $request->endTime;
         $agenda->documentFile = $filename;
         $agenda->save();
-
-        $user = User::all();
-        Notification::send($user, new AgendaInfo($agenda));
-        return redirect()->route('agenda.index')->with('success', 'Agenda berhasil ditambahkan');
+        $notification = [
+            'type' => 'success',
+            'message' => 'Agenda berhasil ditambahkan',
+        ];
+    
+        $request->session()->flash('notification', $notification);
+        
+        return redirect('/admin/agenda');
+        
     }
 
     public function view(){
         $agenda = Agenda::all();
         return view('agenda.listagenda', compact('agenda'));
     }
-
+    public function updateagenda($id)
+    {
+        $agenda = Agenda::find($id);
+        return view('agenda.updateagenda', compact('agenda'));
+    }
+    public function updatelistagenda($id, Request $request)
+    {
+        $agenda = Agenda::find($id);
+        $agenda->nama = $request->nama;
+        $agenda->tempat = $request->tempat;
+        $agenda->deskripsi = $request->deskripsi;
+        $agenda->dateTime = $request->dateTime;
+        $agenda->startTime = $request->startTime;
+        $agenda->endTime = $request->endTime;
+        $agenda->save();
+        $notification = [
+            'type' => 'success',
+            'message' => 'Agenda berhasil diupdate',
+        ];
+    
+        $request->session()->flash('notification', $notification);
+    
+        return redirect('/admin/agenda/list');
+        
+    }
+    public function presensiagenda($id)
+    {
+        $agenda = Agenda::find($id);
+        return view('agenda.presensiagenda', compact('agenda'));
+    }
     public function delete($id){
         $agenda = Agenda::find($id);
         $agenda->delete();

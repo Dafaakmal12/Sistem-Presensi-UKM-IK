@@ -1,5 +1,6 @@
 @extends('layouts.admin')
 @section('content')
+
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -31,6 +32,7 @@
                 </tr>
             @endif
             @foreach($agenda as $item)
+            
             <tr>
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                     {{ $item->nama }}
@@ -50,6 +52,24 @@
                 </td>
                 </td>
                 <td class="px-6 py-4">
+                            <button data-modal-target="defaultModal-{{$item->id}}" data-modal-toggle="defaultModal-{{$item->id}}"
+                                class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                                type="button">
+                                Show
+                            </button>
+                            
+                <form action="{{ route('agenda.presensiagenda', $item->id) }}" method="GET">
+                                @csrf
+                                <button type="submit" class="font-medium text-yellow-600 dark:text-yellow-500 hover:underline">
+                                Presensi
+                                </button>
+                            </form>
+                <form action="{{ route('agenda.updateagenda', $item->id) }}" method="GET">
+                                @csrf
+                                @method('GET')
+                                <button type="submit" class="font-medium text-green-600 dark:text-green-500 hover:underline">Update</button>
+                            </form>
+                            
                     <form action="{{ route('agenda.delete', $item->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
@@ -59,5 +79,59 @@
                     </form>
                 </td>
             </tr>
+            <!-- Main modal -->
+            <div id="defaultModal-{{$item->id}}" tabindex="-1" aria-hidden="true"
+                        class="fixed top-0 left-2 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
+                        <div class="relative w-full h-full max-w-2xl md:h-auto">
+                            <!-- Modal content -->
+                            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                <!-- Modal header -->
+                                <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
+                                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                                        Deskripsi Agenda
+                                    </h3>
+                                    <button type="button"
+                                        class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                                        data-modal-hide="defaultModal-{{$item->id}}">
+                                        <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd"
+                                                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                                clip-rule="evenodd"></path>
+                                        </svg>
+                                        <span class="sr-only">Close modal</span>
+                                    </button>
+                                </div>
+                                <!-- Modal body -->
+                                <div class="p-6 space-y-60">
+                                    <h3>{!! nl2br(e($item->deskripsi)) !!}</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            
             @endforeach
+            @if(session('notification'))
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const notification = @json(session('notification'));
+                const toast = document.createElement('div');
+                toast.textContent = notification.message;
+                
+toast.style.top = '2rem';
+toast.style.right = '27rem'; // You can adjust the 'right' value as needed
+toast.style.padding = '0.5rem';
+toast.style.position = 'fixed';
+toast.style.borderRadius = '0.375rem';
+toast.style.backgroundColor = notification.type === 'success' ? '#48BB78' : '#F56565';
+toast.style.color = 'white';
+
+                document.body.appendChild(toast);
+                setTimeout(() => {
+                    document.body.removeChild(toast);
+                }, 5000);
+                
+            });
+        </script>
+    @endif
 @endsection

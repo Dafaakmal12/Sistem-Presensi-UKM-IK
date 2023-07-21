@@ -22,11 +22,15 @@
                 </tr>
             </thead>
             <tbody>
+                
                 @if($users->count() == 0)
                     <tr>
                         <td colspan="5" class="text-center">Tidak ada data</td>
                     </tr>
                 @endif
+
+             
+                
                 @foreach ($users as $user)
                     <tr>
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
@@ -47,6 +51,11 @@
                                 type="button">
                                 Show
                             </button>
+                            <form action="{{route('admin.update', $user->id)}}" method="GET">
+                                @csrf
+                                @method('GET')
+                                <button type="submit" class="font-medium text-green-600 dark:text-green-500 hover:underline">Update</button>
+                            </form>
                             <form action="{{route('admin.anggota.delete', $user->id)}}" method="POST">
                                 @csrf
                                 @method('DELETE')
@@ -89,6 +98,29 @@
                         </div>
                     </div>
                 @endforeach
+                @if(session('notification'))
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const notification = @json(session('notification'));
+                const toast = document.createElement('div');
+                toast.textContent = notification.message;
+                
+toast.style.top = '2rem';
+toast.style.right = '27rem'; // You can adjust the 'right' value as needed
+toast.style.padding = '0.5rem';
+toast.style.position = 'fixed';
+toast.style.borderRadius = '0.375rem';
+toast.style.backgroundColor = notification.type === 'success' ? '#48BB78' : '#F56565';
+toast.style.color = 'white';
+
+                document.body.appendChild(toast);
+                setTimeout(() => {
+                    document.body.removeChild(toast);
+                }, 5000);
+                
+            });
+        </script>
+    @endif
             </tbody>
         </table>
     </div>

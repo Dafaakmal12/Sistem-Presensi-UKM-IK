@@ -44,6 +44,7 @@ class LoginController extends Controller
             'email' => 'anjeeeennggg',
         ]);
     }
+    
 
     public function logout()
     {

@@ -34,10 +34,15 @@ Route::get('/admin', [AdminController::class, 'index'])->name("admin.index");
 Route::get('/admin/anggota', [AdminController::class, 'anggota'])->name("admin.anggota");
 Route::get('/admin/list', [AdminController::class, 'anggotaList'])->name("admin.listanggota");
 Route::post('/admin/create', [AdminController::class, 'create'])->name("admin.anggota.create");
+Route::get('/admin/update/{id}', [AdminController::class, 'update'])->name("admin.update");
+Route::post('/admin/updateanggota/{id}', [AdminController::class, 'updateanggota'])->name("admin.updateanggota");
 Route::delete('/admin/list/{id}', [AdminController::class, 'delete'])->name("admin.anggota.delete");
 Route::get('/admin/agenda', [AgendaController::class, 'index'])->name("agenda.index");
 Route::post('/admin/agenda/store', [AgendaController::class, 'store'])->name("agenda.store");
 Route::get('/admin/agenda/list', [AgendaController::class, 'view'])->name("agenda.listagenda");
+Route::get('/admin/agenda/updateagenda/{id}', [AgendaController::class, 'updateagenda'])->name("agenda.updateagenda");
+Route::post('/admin/agenda/updatelistagenda/{id}', [AgendaController::class, 'updatelistagenda'])->name("agenda.updatelistagenda");
+Route::get('/admin/agenda/presensiagenda/{id}', [AgendaController::class, 'presensiagenda'])->name("agenda.presensiagenda");
 Route::delete('/admin/agenda/list/{id}', [AgendaController::class, 'delete'])->name("agenda.delete");
 //download file
 Route::get('/admin/agenda/list/{id}', [AgendaController::class, 'download'])->name("agenda.download");
