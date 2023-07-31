@@ -26,12 +26,12 @@
                         </tr>
         </thead>
         <tbody>
-        @if($agenda->count() == 0)
+        @if($agendas->count() == 0)
                         <tr>
                             <td colspan="5" class="text-center">Tidak ada data</td>
                         </tr>
                         @endif
-                        @foreach($agenda as $item)
+                        @foreach($agendas as $item)
 
                         <tr>
                             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
@@ -92,14 +92,27 @@
                                         <h3>{!! nl2br(e($item->deskripsi)) !!}</h3>
                                     </div>
                                     <!-- Button Presensi -->
-                                    <form action="{{ route('users.attendance') }}" method="POST">
-                                        @csrf
-                                        <input type="hidden" name="id_event" value="{{ $item->id }}">
-                                        <input type="hidden" name="tanggal" value="{{ $item->dateTime }}">
-                                        <button type="submit" class="w-full p-3 text-white bg-yellow-600 rounded-md shadow-md hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:ring-opacity-50">
-                                            Presensi
-                                        </button>
-                                    </form>
+                                    @if ($item->dateTime <= now())
+            @if ($item->startTime <= now() && $item->endTime >= now())
+                {{-- If current time is within the item's startTime and endTime --}}
+                @if($item->attendanceStatus)
+                    <button type="button" class="w-full p-3 text-white bg-yellow-600 rounded-md shadow-md hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:ring-opacity-50 cursor-not-allowed" disabled>Already Attended</button>
+                @else
+                    <form action="{{ route('users.attendance') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="id_event" value="{{ $item->id }}">
+                        <input type="hidden" name="tanggal" value="{{ $item->dateTime }}">
+                        <button class="w-full p-3 text-white bg-yellow-600 rounded-md shadow-md hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:ring-opacity-50" type="submit">Presensi</button>
+                    </form>
+                @endif
+            @else
+                {{-- If the item's dateTime is in the past and the current time is not within startTime and endTime --}}
+                <span>This event has ended.</span>
+            @endif
+        @else
+            {{-- If the item's dateTime is in the future --}}
+            <span>This event has not started yet.</span>
+        @endif
                                 </div>
                             </div>
                         </div>

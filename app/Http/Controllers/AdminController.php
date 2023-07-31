@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Agenda;
+use App\Models\Attendance;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -49,7 +50,14 @@ class AdminController extends Controller
     public function attendance()
     {
         // You can return the view for the attendance page here
-        $agenda = Agenda::all();
+        $agenda = Agenda::with('attendance.user')->get();
+        return view('admin.attendance', compact('agenda'));
+    
+    }
+    public function attendanceUserList($id)
+    {
+        // You can return the view for the attendance page here
+        $agenda = Agenda::with('attendance.user')->find($id);
         return view('admin.attendance', compact('agenda'));
     }
     // public function anggotaPresensi()

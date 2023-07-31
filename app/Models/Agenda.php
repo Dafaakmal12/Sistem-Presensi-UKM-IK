@@ -39,4 +39,9 @@ class Agenda extends Model
     {
         return $this->belongsToMany(User::class);
     }
+
+    public function attendance()
+    {
+        return $this->hasMany(Attendance::class, 'id_event', 'id');
+    }
 }

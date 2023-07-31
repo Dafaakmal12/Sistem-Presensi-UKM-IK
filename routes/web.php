@@ -38,6 +38,7 @@ Route::post('/admin/create', [AdminController::class, 'create'])->name("admin.an
 Route::get('/admin/update/{id}', [AdminController::class, 'update'])->name("admin.update");
 // Route::get('/admin/presensiagenda', [AdminController::class, 'anggotaPresensi'])->name('presensiagenda');
 Route::get('/admin/attendance', [AdminController::class, 'attendance'])->name('admin.attendance');
+Route::get('/admin/attendance/{id}', [AdminController::class, 'attendanceUserList'])->name('admin.attendanceDetail');
 Route::post('/admin/updateanggota/{id}', [AdminController::class, 'updateanggota'])->name("admin.updateanggota");
 Route::delete('/admin/list/{id}', [AdminController::class, 'delete'])->name("admin.anggota.delete");
 Route::get('/admin/agenda', [AgendaController::class, 'index'])->name("agenda.index");

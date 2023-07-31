@@ -3,7 +3,7 @@
 @section('content')
 <head>
     <!-- ... other meta tags and stylesheets ... -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.2/xlsx.full.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.2/xlsx.full.min.js"></script> -->
 </head>
 
 <div class="flex justify-center"><br/>
@@ -109,20 +109,22 @@
                     </thead>
                     <tbody>
                         <!-- Replace this with your Blade loop to show the attendance data -->
+                        @foreach($item->attendance as $att)
                         <tr>
                             <td class="px-6 py-4">
-                                1
+                            {{ $loop->iteration }}
                             </td>
                             <td class="px-6 py-4">
-                                NRA12345
+                                {{ $att->user->nra }}
                             </td>
                             <td class="px-6 py-4">
-                                John Doe
+                                {{ $att->user->name }}
                             </td>
                             <td class="px-6 py-4">
-                                Hadir
+                            {{ $att->isAttend }}
                             </td>
                         </tr>
+                        @endforeach
                         <!-- You can add more rows as needed -->
                     </tbody>
                 </table>
@@ -131,12 +133,15 @@
     </div>
 </div>
 @endforeach
-<script>
+<!-- <script>
     function exportToExcel(sheetName) {
         var rows = [
             ['No', 'NRA', 'Nama', 'Status'],
-            [1, 'NRA12345', 'John Doe', 'Hadir'],
-            // Add more rows as needed
+            <?php /*$count = 1; ?>
+            <?php foreach ($agenda->attendance as $item): ?>
+                ['<?= $count++ ?>', '<?= $item->user->nra ?>', '<?= $item->user->name ?>', '<?= $item->status ?>'],
+                // Add more rows as needed
+            <?php endforeach; */?>
         ];
 
         var sheet = XLSX.utils.aoa_to_sheet(rows);
@@ -146,6 +151,6 @@
         /* Export the workbook */
         XLSX.writeFile(workbook, sheetName + '.xlsx');
     }
-</script>
+</script> -->
 @endsection
 

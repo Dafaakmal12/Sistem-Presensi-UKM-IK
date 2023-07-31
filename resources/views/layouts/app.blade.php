@@ -20,9 +20,10 @@
     <section class="bg-white dark:bg-gray-900">
         <div class="lg:grid lg:min-h-screen lg:grid-cols-12">
             <section class="relative flex h-32 items-end bg-gray-900 lg:col-span-5 lg:h-full xl:col-span-6">
-                <img alt="Night"
-                    src="https://img.freepik.com/free-photo/blue-background_23-2147633356.jpg?w=826&t=st=1689598430~exp=1689599030~hmac=62f6079be04b3fcf0a647e1b959d8a3fc4f3a76228c4efc60ea3d7fa7b06785f"
-                    class="absolute inset-0 h-full w-full object-cover opacity-80" />
+            <img alt="Night" src="http://127.0.0.1:8000/IK.png" class="absolute inset-0 h-[270px] w-[270px] object-cover opacity-80 " style="
+    top: 200px;
+    left: 179px;
+">
 
                 <div class="hidden lg:relative lg:block lg:p-12">
                     <a class="block text-white" href="/">

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Agenda;
+use App\Models\Attendance;
 
 class HomeController extends Controller
 {
@@ -32,9 +33,20 @@ class HomeController extends Controller
 
     public function agenda()
     {
-        $agenda = Agenda::all();
+        $agendas = Agenda::all();
+        // Check attendance status for each agenda
+    $userId = auth()->id();
+    foreach ($agendas as $agenda) {
+        $agenda->attendanceStatus = Attendance::where('id_user', $userId)
+            ->where('id_event', $agenda->id)
+            ->exists();
+
+            $agenda->attendanceStatus = Attendance::where('id_user', $userId)
+            ->where('id_event', $agenda->id)
+            ->exists();
+    }
         // dd($agenda);
-        return view('users.listagenda', compact('agenda'));
+        return view('users.listagenda', compact('agendas'));
     }
 
     public function profile()
