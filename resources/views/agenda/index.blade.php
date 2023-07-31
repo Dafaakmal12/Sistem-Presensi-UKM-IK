@@ -5,7 +5,7 @@
         @csrf
         <div class="mb-6">
             <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama Agenda</label>
-            <input type="name" id="name" name="nama" 
+            <input type="name" id="name" name="nama"
                 class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
                 placeholder="name@flowbite.com" required>
         </div>
@@ -26,11 +26,11 @@
         <div class="mb-6">
             <label for="tanggal"
                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Waktu(tanggal/bulan/tahun)</label>
-            <p>Date: <input type="text" name="dateTime" id="datepicker"  ></p>
+            <p>Date: <input type="text" name="dateTime" id="datepicker"></p>
         </div>
         <div class="mb-6">
             <label for="startTime" >Agenda Mulai :</label>
-            <input type="time" id="startTime" name="startTime" required>
+            <input type="time" id="startTime" name="startTime"  required>
         </div>
         <div class="mb-6">
             <label for="endTime">Agenda Berakhir :</label>
@@ -49,6 +49,7 @@
             $("#datepicker").datepicker();
         });
     </script>
+
      @if(session('notification'))
         <script>
             document.addEventListener('DOMContentLoaded', function() {

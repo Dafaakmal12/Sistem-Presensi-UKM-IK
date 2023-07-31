@@ -1,5 +1,21 @@
 @extends('layouts.admin')
 @section('content')
+<div class="flex justify-center">
+<h2 class="text-xl font-semibold text-gray-900 dark:text-white mb-4 ">Daftar Anggota</h2>
+</div>
+
+
+<div class="flex justify-end mb-4">
+<form action="{{ route('admin.anggota') }}" method="GET" >
+@csrf
+        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded">
+                Tambah Anggota
+            </button>
+</form>
+</div> 
+
+
+        
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">

@@ -32,7 +32,9 @@ class HomeController extends Controller
 
     public function agenda()
     {
-        return view('users.listagenda');
+        $agenda = Agenda::all();
+        // dd($agenda);
+        return view('users.listagenda', compact('agenda'));
     }
 
     public function profile()

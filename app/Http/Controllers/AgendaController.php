@@ -16,6 +16,7 @@ class AgendaController extends Controller
     public function index()
     {
         return view('agenda.index');
+        
     }
 
 
@@ -52,7 +53,7 @@ class AgendaController extends Controller
     
         $request->session()->flash('notification', $notification);
         
-        return redirect('/admin/agenda');
+        return redirect('/admin/agenda/list');
         
     }
 

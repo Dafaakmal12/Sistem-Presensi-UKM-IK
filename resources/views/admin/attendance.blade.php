@@ -1,9 +1,11 @@
-@extends('layouts.user')
+@extends('layouts.admin')
 
 @section('content')
-<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+<form action="{{ route('admin.attendance') }}" method="GET" >
+    @csrf
+    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
                             <th scope="col" class="px-6 py-3">
                                 Nama Agenda
@@ -24,9 +26,9 @@
                                 Action
                             </th>
                         </tr>
-        </thead>
-        <tbody>
-        @if($agenda->count() == 0)
+            </thead>
+           <tbody>
+           @if($agenda->count() == 0)
                         <tr>
                             <td colspan="5" class="text-center">Tidak ada data</td>
                         </tr>
@@ -52,8 +54,8 @@
                             </td>
                             </td>
                             <td class="px-6 py-4">
-                                <button data-modal-target="defaultModal-{{$item->id}}" data-modal-toggle="defaultModal-{{$item->id}}" class="font-medium text-green-600 dark:text-green-500 hover:underline" type="button">
-                                    Detail
+                                <button data-modal-target="defaultModal-{{$item->id}}" data-modal-toggle="defaultModal-{{$item->id}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline" type="button">
+                                    Show
                                 </button>
 
                                 <!-- <form action="{{ route('agenda.updateagenda', $item->id) }}" method="GET">
@@ -110,3 +112,4 @@
 
 
 @endsection
+

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Agenda;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -45,10 +46,17 @@ class AdminController extends Controller
         
         
     }
-    public function anggotaPresensi()
+    public function attendance()
     {
-        return view('admin.anggotaPresensi');
+        // You can return the view for the attendance page here
+        $agenda = Agenda::all();
+        return view('admin.attendance', compact('agenda'));
     }
+    // public function anggotaPresensi()
+    // {
+    //     return view('admin.anggotaPresensi');
+    // }
+    
     public function anggotaList()
     {
         $users = User::all();
@@ -80,7 +88,7 @@ class AdminController extends Controller
     
         $request->session()->flash('notification', $notification);
     
-        return redirect('/admin/anggota');
+        return redirect('/admin/list');
     }
 
     public function delete(User $users, $id){

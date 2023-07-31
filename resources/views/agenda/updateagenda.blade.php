@@ -19,23 +19,23 @@
         <div class="mb-6">
             <label for="deskripsi" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Deskripsi
                 Agenda</label>
-            <textarea type="deksripsi" id="deskripsi" name="deskripsi" value="{{ $agenda->deskripsi }}"
+            <textarea type="deksripsi" id="deskripsi" name="deskripsi" 
                 class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
-                required>
+                required>{{ $agenda->deskripsi }}
             </textarea>
         </div>
         <div class="mb-6">
             <label for="tanggal"
                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Waktu(tanggal/bulan/tahun)</label>
-            <p>Date: <input type="text" name="dateTime" id="datepicker"></p>
+            <p>Date: <input type="text" name="dateTime" id="datepicker" value="{{ $agenda->dateTime }}"></p>
         </div>
         <div class="mb-6">
             <label for="startTime" >Agenda Mulai :</label>
-            <input type="time" id="startTime" name="startTime" min="09:00" max="18:00" required>
+            <input type="time" id="startTime" name="startTime" value="{{ $agenda->startTime->format('H:i') }}" required>
         </div>
         <div class="mb-6">
             <label for="endTime">Agenda Berakhir :</label>
-            <input type="time" id="endTime" name="endTime" min="09:00" max="18:00" required>
+            <input type="time" id="endTime" name="endTime" value="{{ $agenda->endTime->format('H:i') }}" required>
         </div>
         <div class="mb-6">
             <label for="documentFile">documentFile</label>

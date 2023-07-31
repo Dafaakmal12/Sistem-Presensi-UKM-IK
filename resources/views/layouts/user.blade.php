@@ -35,6 +35,9 @@
         aria-label="Sidebar">
         <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
             <ul class="space-y-2">
+            <div class="flex justify-center items-center p-4 bg-gray-100">
+        <img src="{{ asset('IK.png') }}" alt="Logo" class="h-25">
+    </div>
                 <li>
                     <a href="{{route('users.index')}}"
                         class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
