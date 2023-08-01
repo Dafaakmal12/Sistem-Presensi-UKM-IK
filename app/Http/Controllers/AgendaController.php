@@ -8,10 +8,12 @@ use App\Models\User;
 use App\Notifications\AgendaInfo;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Notification;
+use Illuminate\Support\Facades\Mail;
 
 
 class AgendaController extends Controller
 {
+    
     //
     public function index()
     {
@@ -50,11 +52,21 @@ class AgendaController extends Controller
             'type' => 'success',
             'message' => 'Agenda berhasil ditambahkan',
         ];
+        
+        $user = User::where('role', 'user')->get();
+        Notification::send($user, new AgendaInfo($agenda));
     
         $request->session()->flash('notification', $notification);
         
         return redirect('/admin/agenda/list');
         
+    }
+
+    public function notification($id){
+        $agenda = Agenda::find($id);
+        $user = User::where('role', 'user')->get();
+        Notification::send($user, new AgendaInfo($agenda));
+        return redirect()->route('agenda.listagenda')->with('success', 'Notifikasi berhasil dikirim');
     }
 
     public function view(){

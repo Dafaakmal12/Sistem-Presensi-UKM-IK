@@ -15,6 +15,8 @@
 
     <! -- tailwindcss -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
+
         <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
         
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>

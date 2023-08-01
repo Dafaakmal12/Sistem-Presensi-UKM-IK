@@ -6,6 +6,8 @@ use App\Models\User;
 use App\Models\Agenda;
 use App\Models\Attendance;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\AttendanceExport;
 
 class AdminController extends Controller
 {
@@ -103,5 +105,12 @@ class AdminController extends Controller
         $users = User::find($id);
         $users->delete();
         return redirect('/admin/list');
+    }
+
+    public function exportToExcel($id_event)
+    {
+        // get agenda name by id
+        $agenda = Agenda::find($id_event);
+        return Excel::download(new AttendanceExport($id_event), $agenda->nama.'attendance.xlsx');
     }
 }

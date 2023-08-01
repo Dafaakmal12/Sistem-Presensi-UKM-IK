@@ -1,15 +1,20 @@
 @extends('layouts.app')
 @section('content')
-    <form method="POST" class="w-full" action="{{ route('login.authenticate') }}">
+    <form method="POST" class="w-full max-w-md mx-auto" action="{{ route('login.authenticate') }}">
         {{ method_field('POST') }}
         @csrf
         @if ($errors->any())
-            <div class="p-4 mb-4 text-sm text-red-800 text-center rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+            <div class="p-4 mb-4 text-sm text-red-800 text-center rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+                role="alert">
                 @foreach ($errors->all() as $error)
                     <li class="list-none">{{ $error }}</li>
                 @endforeach
             </div>
         @endif
+        <div class="text-center mb-4 "> <!-- Reduced the margin-bottom to 4 -->
+            <h2 class="text-2xl font-semibold mb-2" >Log in</h2> <!-- Reduced the margin-bottom to 2 -->
+            <p class="text-lg">Log in to access your account.</p><br>
+        </div>
         <div class="mb-6">
             <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email address</label>
             <input type="email" id="email" name="email"
@@ -28,3 +33,17 @@
         </button>
     </form>
 @endsection
+
+<style>
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+        form {
+            padding: 0 1rem; /* Add some horizontal padding on small screens */
+        }
+
+        .text-center {
+            /* Center align text on small screens */
+            text-align: center;
+        }
+    }
+</style>

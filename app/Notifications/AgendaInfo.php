@@ -48,8 +48,8 @@ class AgendaInfo extends Notification
             ->line('Informasi Agenda')
             ->line('Nama Agenda: ' . $this->agenda->nama)
             ->line('Tanggal: ' . $this->agenda->dateTime->format('d-m-Y'))
-            ->line('Waktu: ' . $this->agenda->startTime->format('H:i') . ' - ' . $this->agenda->endTime->format('H:i') . ' WIB')
-            ->action('Lihat Agenda', url('/'))
+            ->line('Waktu presensi: ' . $this->agenda->startTime->format('H:i') . ' - ' . $this->agenda->endTime->format('H:i') . ' WIB')
+            ->action('Lihat Agenda', url('/user/agenda'))
             ->line('Terima kasih telah menggunakan aplikasi kami!');
     }
 

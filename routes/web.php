@@ -51,6 +51,9 @@ Route::post('/admin/agenda/updatelistagenda/{id}', [AgendaController::class, 'up
 Route::delete('/admin/agenda/list/{id}', [AgendaController::class, 'delete'])->name("agenda.delete");
 //download file
 Route::get('/admin/agenda/list/{id}', [AgendaController::class, 'download'])->name("agenda.download");
+Route::get('admin/agenda/notification/{id}', [AgendaController::class, 'notification'])->name("agenda.notification");
+Route::get('admin/export/{id}', [AdminController::class, 'exportToExcel'])->name('export');
+
 
 // welcome route
 Route::get('/', [LoginController::class, 'index'])->name("login");
