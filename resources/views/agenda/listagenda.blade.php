@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('content')
-<div class="flex justify-center">
-    <h2 class="text-xl font-semibold text-gray-900 dark:text-white mb-4 ">Daftar Agenda</h2>
+<div class="flex justify-center items-center border-2 mb-2 py-2">
+    <h2 class="text-xl font-semibold text-gray-900 dark:text-white ">Daftar Agenda</h2>
 </div>
 
 
@@ -35,9 +35,9 @@
 @endif
 
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+    <table class="w-full border-collapse text-sm text-left text-gray-500 dark:text-gray-400 border-2 border-black ">
         <!-- Table header -->
-        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-400 dark:bg-gray-700 dark:text-gray-400">
 
             <tr>
                 <th scope="col" class="px-6 py-3">
@@ -60,7 +60,7 @@
                 </th>
             </tr>
         </thead>
-        <tbody>
+        <tbody class="bg-white border-2 border-collapse border-black">
             @if($agenda->count() == 0)
             <tr>
                 <td colspan="5" class="text-center">Tidak ada data</td>

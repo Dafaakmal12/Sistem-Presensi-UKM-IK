@@ -34,14 +34,13 @@ class LoginController extends Controller
         Auth::login($user);
 
         if ($user->role == 'admin') {
-            return redirect()->intended('admin');
-        } else {
-            return redirect()->intended('user');
-        }
-
+        return redirect()->intended('admin');
+    } else {
+        return redirect()->intended('user');
+    }
 
         return back()->withErrors([
-            'email' => 'anjeeeennggg',
+            'email' => 'Email atau password salah',
         ]);
     }
     

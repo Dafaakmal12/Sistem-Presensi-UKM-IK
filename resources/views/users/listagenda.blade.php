@@ -1,14 +1,14 @@
 @extends('layouts.user')
 
 @section('content')
-
-<div class="flex justify-center">
-    <h2 class="text-xl font-semibold text-gray-900 dark:text-white mb-4 ">Daftar Agenda</h2>
+<div class="flex justify-center items-center border-2 mb-2 py-2">
+    <h2 class="text-xl font-semibold text-gray-900 dark:text-white ">Daftar Agenda</h2>
 </div>
 
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+    <table class="w-full border-collapse text-sm text-left text-gray-500 dark:text-gray-400 border-2 border-black ">
+        <!-- Table header -->
+        <thead class="text-xs text-gray-700 uppercase bg-gray-400 dark:bg-gray-700 dark:text-gray-400">
             <tr>
                 <th scope="col" class="px-6 py-3">
                     Nama Agenda
@@ -30,7 +30,7 @@
                 </th>
             </tr>
         </thead>
-        <tbody>
+        <tbody class="bg-white border-2 border-collapse border-black">
             @if($agendas->count() == 0)
             <tr>
                 <td colspan="5" class="text-center">Tidak ada data</td>
@@ -60,9 +60,10 @@
                 <td class="px-6 py-4">
                     <button data-modal-target="defaultModal-{{$item->id}}"
                         data-modal-toggle="defaultModal-{{$item->id}}"
-                        class="font-medium text-green-600 dark:text-green-500 hover:underline" type="button">
-                        Detail
+                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded">
+                        Presensi
                     </button>
+
 
                     <!-- <form action="{{ route('agenda.updateagenda', $item->id) }}" method="GET">
                                     @csrf
@@ -120,7 +121,7 @@
                                     <input type="hidden" name="tanggal" value="{{ $item->dateTime }}">
                                     <button
                                         class="w-full p-3 text-white bg-blue-600 rounded-md shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50"
-                                        type="submit">Presensi</button>
+                                        type="submit">Submit Presensi</button>
                                 </form>
                                 @endif
                                 @else

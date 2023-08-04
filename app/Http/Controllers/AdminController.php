@@ -13,7 +13,10 @@ class AdminController extends Controller
 {
     public function index()
     {
-        return view('admin.index');
+        $date = date('Y-m-d');
+        
+        return view('admin.index', compact('date'));
+        
     }
     
     public function anggota()

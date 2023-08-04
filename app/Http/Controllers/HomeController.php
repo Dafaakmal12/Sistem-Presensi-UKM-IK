@@ -29,6 +29,11 @@ class HomeController extends Controller
         //get lastest agenda from database
         $agenda = Agenda::latest()->first();   
         return view('users.index', compact('date', 'agenda'));
+         
+        //get users from database by id
+        $users = User::find($id);
+        return view('users.index', compact('users'));
+        
     }
 
     public function agenda()
